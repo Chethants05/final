@@ -44,7 +44,7 @@ const About = () => {
               whileInView={'show'}
               viewport={{ once: false, amount: 0.1 }}
               className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
-              Studynotion is at the forefront of driving innovation in online
+              Brightpath is at the forefront of driving innovation in online
               education. We're passionate about creating a brighter future by
               offering cutting-edge courses, leveraging emerging technologies,
               and nurturing a vibrant learning community.
@@ -82,13 +82,12 @@ const About = () => {
               </h1>
               <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
                 Our e-learning platform was born out of a shared vision and
-                passion for transforming education. It all began with a group of
-                educators, technologists, and lifelong learners who recognized
+                passion for transforming education. It all began with a group of lifelong learners who recognized
                 the need for accessible, flexible, and high-quality learning
                 opportunities in a rapidly evolving digital world.
               </p>
               <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
-                As experienced educators ourselves, we witnessed firsthand the
+                As Learners ourselves, we witnessed firsthand the
                 limitations and challenges of traditional education systems. We
                 believed that education should not be confined to the walls of a
                 classroom or restricted by geographical boundaries. We
@@ -146,13 +145,13 @@ const About = () => {
         <ContactFormSection />
       </section>
 
-      {/* Reviws from Other Learner */}
+      {/* Reviws from Other Learner
       <div className=" my-20 px-5 text-white ">
         <h1 className="text-center text-4xl font-semibold mt-8">
           Reviews from other learners
         </h1>
         <ReviewSlider />
-      </div>
+      </div> */}
 
       {/* footer */}
       <Footer />

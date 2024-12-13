@@ -104,11 +104,11 @@ const Home = () => {
                 <div className='relative h-[450px] md:h-[550px] justify-center mx-auto flex flex-col w-11/12 max-w-maxContent items-center text-white '>
 
                     <Link to={"/signup"}>
-                        <div className='z-0 group p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200
+                        <div className='z-0 group p-1 mx-auto rounded-full bg-richblack-800 font-bold text-white
                                         transition-all duration-200 hover:scale-95 w-fit'>
                             <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px]
                               transition-all duration-200 group-hover:bg-richblack-900'>
-                                <p>Become an Instructor</p>
+                                <p>JOIN US NOW</p>
                                 <FaArrowRight />
                             </div>
                         </div>
@@ -123,7 +123,7 @@ const Home = () => {
                         className='text-center text-3xl lg:text-4xl font-semibold mt-7  '
                     >
                         Empower Your Future with
-                        <HighlightText text={"Coding Skills"} />
+                        <HighlightText text={"Skills"} />
                     </motion.div>
 
                     <motion.div
@@ -133,7 +133,7 @@ const Home = () => {
                         viewport={{ once: false, amount: 0.1 }}
                         className=' mt-4 w-[90%] text-center text-base lg:text-lg font-bold text-richblack-300'
                     >
-                        With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.
+                        With our online courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback.
                     </motion.div>
 
 
@@ -142,7 +142,7 @@ const Home = () => {
                             Learn More
                         </CTAButton>
 
-                        <CTAButton active={false} linkto={"/login"}>
+                        <CTAButton active={false} linkto={"/signup"}>
                             Book a Demo
                         </CTAButton>
                     </div>
@@ -157,7 +157,7 @@ const Home = () => {
                             heading={
                                 <div className='text-3xl lg:text-4xl font-semibold'>
                                     Unlock Your
-                                    <HighlightText text={"coding potential "} />
+                                    <HighlightText text={"potential "} />
                                     with our online courses
                                 </div>
                             }
@@ -193,7 +193,7 @@ const Home = () => {
                             heading={
                                 <div className="w-[100%] text-3xl lg:text-4xl font-semibold lg:w-[50%]">
                                     Start
-                                    <HighlightText text={"coding in seconds"} />
+                                    <HighlightText text={"learning in seconds"} />
                                 </div>
                             }
                             subheading={
@@ -255,13 +255,13 @@ const Home = () => {
                     </div>
 
                     <div className='mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7'>
-                        <div className='flex flex-col lg:flex-row gap-5 mb-10 mt-[95px]'>
+                        <div className='flex flex-col lg:flex-row gap-5 mb-10 mt-[95px] justify-center'>
                             <div className='text-3xl lg:text-4xl font-semibold w-full lg:w-[45%]'>
                                 Get the Skills you need for a
                                 <HighlightText text={"Job that is in demand"} />
                             </div>
 
-                            <div className='flex flex-col gap-10 w-full lg:w-[40%] items-start'>
+                            <div className='flex flex-col gap-10 w-full lg:w-[40%] items-start items-center justify-center'>
                                 <div className='text-[16px]'>
                                     The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                                 </div>
@@ -285,15 +285,17 @@ const Home = () => {
 
 
                 {/*Section 3 */}
-                <div className='mt-14 w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
+              
+                {/* <div className='mt-14 w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
                     <InstructorSection />
 
-                    {/* Reviws from Other Learner */}
+    
                     <h1 className="text-center text-3xl lg:text-4xl font-semibold mt-8 flex justify-center items-center gap-x-3">
                         Reviews from other learners <MdOutlineRateReview className='text-yellow-25' />
                     </h1>
                     <ReviewSlider />
                 </div>
+                 */}
 
                 {/*Footer */}
                 <Footer />
