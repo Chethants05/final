@@ -67,7 +67,7 @@ const Home = () => {
 
     // get courses data
     const [CatalogPageData, setCatalogPageData] = useState(null);
-    const categoryID = "6506c9dff191d7ffdb4a3fe2" // hard coded
+    const categoryID = "675c5828a24fb78ef0fd733c" // hard coded
     const dispatch = useDispatch();
 
     useEffect(() => {

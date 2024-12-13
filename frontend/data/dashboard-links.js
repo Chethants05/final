@@ -33,7 +33,7 @@ export const sidebarLinks = [
     id: 6,
     name: "Add Lecturer",
     path: "/",
-    type: ACCOUNT_TYPE.ADMIN,
+    type: [ACCOUNT_TYPE.ADMIN],
     icon: "VscAdd",
   },
   {
@@ -43,15 +43,15 @@ export const sidebarLinks = [
     type: [ACCOUNT_TYPE.STUDENT],
     icon: "VscMortarBoard",
   },
+  // {
+  //   id: 6,
+  //   name: "Purchase History",
+  //   path: "/dashboard/purchase-history",
+  //   type: [ACCOUNT_TYPE.STUDENT],
+  //   icon: "VscHistory",
+  // },
   {
     id: 6,
-    name: "Purchase History",
-    path: "/dashboard/purchase-history",
-    type: [ACCOUNT_TYPE.STUDENT],
-    icon: "VscHistory",
-  },
-  {
-    id: 7,
     name: "Add Instructor",
     path: "/signup",
     type: [ACCOUNT_TYPE.ADMIN],
