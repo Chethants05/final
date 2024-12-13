@@ -44,7 +44,7 @@ export const getAllCourses = async () => {
   toast.dismiss(toastId)
   return result
 }
-
+ 
 
 // ================ fetch Course Details ================
 export const fetchCourseDetails = async (courseId) => {
