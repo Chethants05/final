@@ -75,7 +75,7 @@ export default function InstructorChart({ courses }) {
         </button>
       </div>
 
-      <div className="relative mx-auto h-70 w-70">
+      <div className="relative mx-auto h-90 w-90">
   <Pie
     data={currChart === "students" ? chartDataStudents : chartIncomeData}
     options={options}
