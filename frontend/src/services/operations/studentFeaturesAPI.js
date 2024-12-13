@@ -56,7 +56,7 @@ export async function buyCourse(token, coursesId, userDetails, navigate, dispatc
             currency: orderResponse.data.message.currency,
             amount: orderResponse.data.message.amount,
             order_id: orderResponse.data.message.id,
-            name: "StudyNotion",
+            name: "BrightPath",
             description: "Thank You for Purchasing the Course",
             image: rzpLogo,
             prefill: {

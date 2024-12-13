@@ -110,7 +110,7 @@ export default function MyProfile() {
             <div>
               <p className="mb-2 text-sm text-richblack-600">Gender</p>
               <p className="text-sm font-semibold text-richblack-5">
-                {user?.additionalDetails?.gender ?? "Add Gender"}
+                {user?.additionalDetails?.gender ?? "-"}
               </p>
             </div>
           </div>
@@ -125,14 +125,14 @@ export default function MyProfile() {
             <div>
               <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
               <p className="text-sm font-semibold text-richblack-5">
-                {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
+                {user?.additionalDetails?.contactNumber ?? "-"}
               </p>
             </div>
             <div>
               <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
               <p className="text-sm font-semibold text-richblack-5">
                 {/* {formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date Of Birth"}  */}
-                {user?.additionalDetails?.dateOfBirth ? formattedDate(user?.additionalDetails?.dateOfBirth) : null}
+                {user?.additionalDetails?.dateOfBirth ? formattedDate(user?.additionalDetails?.dateOfBirth) : "-"}
               </p>
             </div>
           </div>

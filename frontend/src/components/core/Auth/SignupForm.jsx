@@ -87,8 +87,9 @@ function SignupForm() {
 
   return (
     <div>
+      {<br/>}
       {/* Tab */}
-      <Tab tabData={tabData} field={accountType} setField={setAccountType} />
+      {/* <Tab tabData={tabData} field={accountType} setField={setAccountType} /> */}
 
       {/* Form */}
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
