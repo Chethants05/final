@@ -1,5 +1,6 @@
 import { ACCOUNT_TYPE } from './../src/utils/constants';
 
+
 export const sidebarLinks = [
   {
     id: 1,
@@ -26,6 +27,13 @@ export const sidebarLinks = [
     name: "Add Course",
     path: "/dashboard/add-course",
     type: [ACCOUNT_TYPE.INSTRUCTOR,ACCOUNT_TYPE.ADMIN],
+    icon: "VscAdd",
+  },
+  {
+    id: 6,
+    name: "Add Lecturer",
+    path: "/",
+    type: ACCOUNT_TYPE.ADMIN,
     icon: "VscAdd",
   },
   {
