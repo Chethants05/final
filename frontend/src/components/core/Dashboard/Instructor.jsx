@@ -43,7 +43,7 @@ export default function Instructor() {
     return (
       <div className="mt-5 w-full flex flex-col justify-between  rounded-xl ">
         <div className="flex border p-4 border-richblack-600 ">
-          <div className="w-full">
+          <div className="w-full h-300px">
             <p className="w-[100px] h-4 rounded-xl skeleton"></p>
             <div className="mt-3 flex gap-x-5">
               <p className="w-[200px] h-4 rounded-xl skeleton"></p>
