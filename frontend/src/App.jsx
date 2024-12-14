@@ -42,6 +42,7 @@ import { HiArrowNarrowUp } from "react-icons/hi"
 
 function App() {
 
+
   const { user } = useSelector((state) => state.profile)
 
   // Scroll to the top of the page when the component mounts
@@ -77,6 +78,8 @@ function App() {
 
 
   return (
+    
+     
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navbar />
 
