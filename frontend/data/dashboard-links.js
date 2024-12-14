@@ -51,7 +51,7 @@ export const sidebarLinks = [
   //   icon: "VscHistory",
   // },
   {
-    id: 6,
+    id: 7,
     name: "Add Instructor",
     path: "/signup",
     type: [ACCOUNT_TYPE.ADMIN],
