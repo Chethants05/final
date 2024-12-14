@@ -69,7 +69,7 @@ export default function Instructor() {
             </Link>
           </div>
 
-          <div className="flex flex-col sm:flex-row  gap-6 ">
+          <div className="flex flex-col sm:flex-row h-10px gap-6 ">
             <p className=" h-[201px] w-full rounded-xl  skeleton"></p>
             <p className=" h-[201px] w-full rounded-xl  skeleton"></p>
             <p className=" h-[201px] w-full rounded-xl  skeleton"></p>
