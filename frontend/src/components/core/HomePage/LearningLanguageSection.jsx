@@ -4,10 +4,14 @@ import know_your_progress from "../../../assets/Images/Know_your_progress.png"
 import compare_with_others from "../../../assets/Images/Compare_with_others.png"
 import plan_your_lesson from "../../../assets/Images/Plan_your_lessons.png"
 import CTAButton from "../HomePage/Button"
-
+import { useSelector } from 'react-redux'
+import { ACCOUNT_TYPE } from './../../../utils/constants';
 
 
 const LearningLanguageSection = () => {
+
+    const { user } = useSelector((state) => state.profile)
+
     return (
         <div className='mt-[130px] mb-10'>
             <div className='flex flex-col gap-5 items-center'>
@@ -40,7 +44,7 @@ const LearningLanguageSection = () => {
                 </div>
 
                 <div className='w-fit'>
-                    <CTAButton active={true} linkto={"/signup"}>
+                    <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/full-catalog" : "/signup"}>
                         <div>
                             Learn more
                         </div>

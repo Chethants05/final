@@ -241,8 +241,9 @@ exports.getEnrolledCourses = async (req, res) => {
             } else {
                 // To make it up to 2 decimal point
                 const multiplier = Math.pow(10, 2)
+                let calculatedDuration = Math.round((courseProgressCount / SubsectionLength) * 100 * multiplier) / multiplier;
                 userDetails.courses[i].progressPercentage =
-                    Math.round((courseProgressCount / SubsectionLength) * 100 * multiplier) / multiplier
+                    calculatedDuration > 100 ? 100 : calculatedDuration; 
             }
         }
 

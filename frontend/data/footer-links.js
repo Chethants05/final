@@ -22,7 +22,7 @@ export const FooterLink2 = [
     links: [
       //{ title: "Bash", link: "/bash" },
       //{ title: "C++", link: "/c++" },
-      { title: "C#", link: "/c#" },
+      { title: "C#", link: "/csharp" },
       { title: "Go", link: "/go" },
       { title: "HTML & CSS", link: "/html-css" },
       { title: "Java", link: "/java" },

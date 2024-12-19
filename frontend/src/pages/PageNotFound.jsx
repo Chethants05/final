@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // currently set as global variable, can be moved into function itself.
-var pagesUnderConstruction = ['career-paths', 'full-catalog', 'forums', 'articles', 'careers', 'paid-memberships', 'for-students', 'business-solutions', 'events', 'professional-certification', 'go', 'sql', 'nosql'];
+var pagesUnderConstruction = ['career-paths', 'forums', 
+  'articles', 'careers', 'paid-memberships', 'for-students', 
+  'business-solutions', 'events', 'professional-certification', 
+  'go', 'sql', 'nosql', 'csharp', 'html-css', 'privacy-policy',
+  'cookie-policy', 'terms'];
 
 const PageNotFound = () => {
   const [isOurPage, setIsOutPage] = useState(false);
@@ -23,7 +27,7 @@ const PageNotFound = () => {
               {
                 isOurPage ?
                   <div className="h-[400px] bg-center bg-[url(https://pixelgraphics.co.in/img/maintenance/mt-mode.gif)] bg-no-repeat">
-                    <h1 className="text-center text-6xl font-extrabold text-black ">Hold tight, we're coming soon!.</h1>
+                    <h1 className="text-center text-6xl font-extrabold text-black ">Hold tight, we're coming soon!</h1>
                     <br/><p style={{color: "black"}}>The page you are looking for is still being designed.</p>
                   </div>
                   : <div className="h-[400px] bg-center bg-[url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif)] ">

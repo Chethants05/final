@@ -110,7 +110,7 @@ exports.createCourse = async (req, res) => {
 // ================ show all courses ================
 exports.getAllCourses = async (req, res) => {
     try {
-        const allCourses = await Course.find({},
+        var allCourses = await Course.find({},
             {
                 courseName: true, courseDescription: true, price: true, thumbnail: true, instructor: true,
                 ratingAndReviews: true, studentsEnrolled: true
@@ -118,8 +118,31 @@ exports.getAllCourses = async (req, res) => {
             .populate({
                 path: 'instructor',
                 select: 'firstName lastName email image'
+            }).populate({
+                path: "courseContent",
+                populate: {
+                    path: "subSection",
+                }
             })
+            .lean()  // This converts the result to plain JavaScript objects
             .exec();
+
+        // here totalDuration property is not part of schema. Its a calculated property and used only to send
+        // it to frontend. So to add calculated properties we need to convert mongoose object to plain js obj
+        // we can use allCourses.toObject() but it will not work when we have multiple populates.
+        // So we used lean().
+        for (let i = 0; i < allCourses.length; i++) {
+            let totalDurationInSeconds = 0;
+        
+            // Loop through each course content
+            for (let j = 0; j < allCourses[i].courseContent.length; j++) {
+                // Loop through each subSection to sum up the duration
+                totalDurationInSeconds += allCourses[i].courseContent[j]
+                    .subSection.reduce((acc, curr) => acc + parseInt(curr.timeDuration), 0);
+            }
+            // Calculate the total duration in a human-readable format (assumes you have this function)
+            allCourses[i].totalDuration = convertSecondsToDuration(totalDurationInSeconds);
+        }
 
         return res.status(200).json({
             success: true,

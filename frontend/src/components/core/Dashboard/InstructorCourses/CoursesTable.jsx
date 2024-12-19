@@ -9,7 +9,7 @@ import { FaCheck } from "react-icons/fa"
 import { FiEdit2 } from "react-icons/fi"
 import { HiClock } from "react-icons/hi"
 import { RiDeleteBin6Line } from "react-icons/ri"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 import { formatDate } from "../../../../services/formatDate"
 import { deleteCourse, fetchInstructorCourses, } from "../../../../services/operations/courseDetailsAPI"
@@ -22,7 +22,7 @@ import toast from 'react-hot-toast'
 
 
 
-export default function CoursesTable({ courses, setCourses, loading, setLoading }) {
+export default function CoursesTable({ courses, setCourses, loading, setLoading, isFullCatalog }) {
 
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
@@ -80,9 +80,13 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
               Price
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
-              Actions
-            </Th>
+            {
+              !isFullCatalog ?
+                <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+                  Actions
+                </Th>
+                : ""
+            }
           </Tr>
         </Thead>
 
@@ -111,14 +115,18 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                 >
                   <Td className="flex flex-1 gap-x-4 relative">
                     {/* course Thumbnail */}
-                    <Img
-                      src={course?.thumbnail}
-                      alt={course?.courseName}
-                      className="h-[148px] min-w-[270px] max-w-[270px] rounded-lg object-cover"
-                    />
+                    <Link to={`/courses/${course._id}`}>
+                      <Img
+                        src={course?.thumbnail}
+                        alt={course?.courseName}
+                        className="h-[148px] min-w-[270px] max-w-[270px] rounded-lg object-cover"
+                      />
+                    </Link>
 
                     <div className="flex flex-col">
-                      <p className="text-lg font-semibold text-richblack-5 capitalize">{course.courseName}</p>
+                      <Link to={`/courses/${course._id}`}>
+                        <p className="text-lg font-semibold text-richblack-5 capitalize">{course.courseName}</p>
+                      </Link>
                       <p className="text-xs text-richblack-300 ">
                         {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
                           ? course.courseDescription
@@ -156,45 +164,47 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                   </Td>
 
                   {/* course duration */}
-                  <Td className="text-sm font-medium text-richblack-100">2hr 30min</Td>
+                  <Td className="text-sm font-medium text-richblack-100">{course.totalDuration}</Td>
                   <Td className="text-sm font-medium text-richblack-100">₹{course.price}</Td>
 
-                  <Td className="text-sm font-medium text-richblack-100 ">
-                    {/* Edit button */}
-                    <button
-                      disabled={loading}
-                      onClick={() => { navigate(`/dashboard/edit-course/${course._id}`) }}
-                      title="Edit"
-                      className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
-                    >
-                      <FiEdit2 size={20} />
-                    </button>
+                  {
+                    !isFullCatalog ? <Td className="text-sm font-medium text-richblack-100 ">
+                      {/* Edit button */}
+                      <button
+                        disabled={loading}
+                        onClick={() => { navigate(`/dashboard/edit-course/${course._id}`) }}
+                        title="Edit"
+                        className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
+                      >
+                        <FiEdit2 size={20} />
+                      </button>
 
-                    {/* Delete button */}
-                    <button
-                      disabled={loading}
-                      onClick={() => {
-                        setConfirmationModal({
-                          text1: "Do you want to delete this course?",
-                          text2:
-                            "All the data related to this course will be deleted",
-                          btn1Text: !loading ? "Delete" : "Loading...  ",
-                          btn2Text: "Cancel",
-                          btn1Handler: !loading
-                            ? () => handleCourseDelete(course._id)
-                            : () => { },
-                          btn2Handler: !loading
-                            ? () => setConfirmationModal(null)
-                            : () => { },
+                      {/* Delete button */}
+                      <button
+                        disabled={loading}
+                        onClick={() => {
+                          setConfirmationModal({
+                            text1: "Do you want to delete this course?",
+                            text2:
+                              "All the data related to this course will be deleted",
+                            btn1Text: !loading ? "Delete" : "Loading...  ",
+                            btn2Text: "Cancel",
+                            btn1Handler: !loading
+                              ? () => handleCourseDelete(course._id)
+                              : () => { },
+                            btn2Handler: !loading
+                              ? () => setConfirmationModal(null)
+                              : () => { },
 
-                        })
-                      }}
-                      title="Delete"
-                      className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
-                    >
-                      <RiDeleteBin6Line size={20} />
-                    </button>
-                  </Td>
+                          })
+                        }}
+                        title="Delete"
+                        className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
+                      >
+                        <RiDeleteBin6Line size={20} />
+                      </button>
+                    </Td> : ""
+                  }
                 </Tr>
               ))
             )}
