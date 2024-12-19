@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import HighlightText from '../components/core/HomePage/HighlightText'
 import CTAButton from "../components/core/HomePage/Button"
@@ -20,6 +20,7 @@ import { FaArrowRight } from "react-icons/fa"
 
 import { motion } from 'framer-motion'
 import { fadeIn, } from './../components/common/motionFrameVarients';
+import { ACCOUNT_TYPE } from './../utils/constants';
 
 // background random images
 import backgroundImg1 from '../assets/Images/random bg img/coding bg1.jpg'
@@ -57,6 +58,9 @@ const Home = () => {
 
     // get background random images
     const [backgroundImg, setBackgroundImg] = useState(null);
+
+    // get user object
+    const { user } = useSelector((state) => state.profile)
 
     useEffect(() => {
         const bg = randomImges[Math.floor(Math.random() * randomImges.length)]
@@ -138,11 +142,11 @@ const Home = () => {
 
 
                     <div className='flex flex-row gap-7 mt-8'>
-                        <CTAButton active={true} linkto={"/signup"}>
+                        <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/enrolled-courses" : "/signup" }>
                             Learn More
                         </CTAButton>
 
-                        <CTAButton active={false} linkto={"/signup"}>
+                        <CTAButton active={false} linkto={"/contact"}>
                             Book a Demo
                         </CTAButton>
                     </div>

@@ -8,7 +8,7 @@ import Img from './../../common/Img';
 import { logout } from "../../../services/operations/authAPI"
 
 
-import { VscDashboard, VscSignOut } from "react-icons/vsc"
+import { VscAccount, VscSignOut } from "react-icons/vsc"
 import { AiOutlineCaretDown, AiOutlineHome } from "react-icons/ai"
 import { MdOutlineContactPhone } from "react-icons/md"
 import { TbMessage2Plus } from "react-icons/tb"
@@ -90,8 +90,8 @@ export default function MobileProfileDropDown() {
                 >
                     <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
                         <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100">
-                            <VscDashboard className="text-lg" />
-                            Dashboard
+                            <VscAccount className="text-lg" />
+                            Profile
                         </div>
                     </Link>
 

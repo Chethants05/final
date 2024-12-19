@@ -11,16 +11,10 @@ import BrightPathLogo from "../../assets/Logo/Logo-Full-Light.png";
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
   "Articles",
-  "Blog",
-  "Chart Sheet",
-  "Code challenges",
-  "Docs",
-  "Projects",
-  "Videos",
-  "Workspaces",
+  "Code challenges"
 ];
 const Plans = ["Paid memberships", "For students", "Business solutions"];
-const Community = ["Forums", "Chapters", "Events"];
+const Community = ["Forums", "Events"];
 
 
 
@@ -36,7 +30,7 @@ const Footer = () => {
               <img src={BrightPathLogo} alt="" className="object-contain" />
               <h1 className="text-richblack-50 font-semibold text-[16px]">Company</h1>
               <div className="flex flex-col gap-2">
-                {["About", "Careers", "Affiliates"].map((ele, i) => {
+                {["About", "Careers"].map((ele, i) => {
                   return (
                     <div
                       key={i}
@@ -67,7 +61,7 @@ const Footer = () => {
                       key={index}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.split(" ").join("-").toLowerCase()}>
+                      <Link to={ele == "Code challenges" ? "https://www.hackerrank.com/" : ele.split(" ").join("-").toLowerCase()}>
                         {ele}
                       </Link>
                     </div>
@@ -139,7 +133,7 @@ const Footer = () => {
                           key={index}
                           className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                         >
-                          <Link to={link.link}>{link.title}</Link>
+                          <Link to={ link.title == "Interview Preparation" ? "https://www.hackerrank.com/interview/preparation-kits" : link.link }>{link.title}</Link>
                         </div>
                       );
                     })}
