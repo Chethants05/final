@@ -139,4 +139,29 @@ exports.isAdmin = (req, res, next) => {
     }
 }
 
+// ================== specific for course addition - Is Instructor or Is Admin ==============
+exports.isInstructorOrAdmin = (req, res, next) => {
+    try {
+        // console.log('User data -> ', req.user)
+        if (req.user?.accountType != 'Instructor' && req.user?.accountType != 'Admin') {
+            console.log(req.user?.accountType);
+            return res.status(401).json({
+                success: false,
+                messgae: 'This Page is protected only for Instructor & Admin'
+            })
+        }
+        // go to next middleware
+        next();
+    }
+    catch (error) {
+        console.log('Error while cheching user validity with Instructor or Admin accountType');
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            error: error.message,
+            messgae: 'Error while cheching user validity with Instructor or Admin accountType'
+        })
+    }
+}
+
 

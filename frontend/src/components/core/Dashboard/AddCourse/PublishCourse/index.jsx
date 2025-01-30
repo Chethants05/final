@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { editCourseDetails } from "../../../../../services/operations/courseDetailsAPI"
 import { resetCourseState, setStep } from "../../../../../slices/courseSlice"
 import { COURSE_STATUS } from "../../../../../utils/constants"
+import { ACCOUNT_TYPE } from '../../../../../utils/constants';
 import IconBtn from "../../../../common/IconBtn"
 
 export default function PublishCourse() {
@@ -16,6 +17,7 @@ export default function PublishCourse() {
   const { token } = useSelector((state) => state.auth)
   const { course } = useSelector((state) => state.course)
   const [loading, setLoading] = useState(false)
+  const { user } = useSelector((state) => state.profile)
 
   useEffect(() => {
     if (course?.status === COURSE_STATUS.PUBLISHED) {
@@ -29,7 +31,12 @@ export default function PublishCourse() {
 
   const goToCourses = () => {
     dispatch(resetCourseState())
-    navigate("/dashboard/my-courses")
+    if (user?.accountType === ACCOUNT_TYPE.ADMIN) {
+      navigate("/dashboard/full-catalog")
+    }
+    else {
+      navigate("/dashboard/my-courses")
+    }
   }
 
   const handleCoursePublish = async () => {

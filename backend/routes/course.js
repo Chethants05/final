@@ -50,7 +50,7 @@ const {
 
 
 // Middlewares
-const { auth, isAdmin, isInstructor, isStudent } = require('../middleware/auth')
+const { auth, isAdmin, isInstructor, isStudent, isInstructorOrAdmin } = require('../middleware/auth')
 
 
 // ********************************************************************************************************
@@ -58,17 +58,17 @@ const { auth, isAdmin, isInstructor, isStudent } = require('../middleware/auth')
 // ********************************************************************************************************
 // Courses can Only be Created by Instructors
 
-router.post('/createCourse', auth, isInstructor, createCourse);
+router.post('/createCourse', auth, isInstructorOrAdmin, createCourse);
 
 //Add a Section to a Course
-router.post('/addSection', auth, isInstructor, createSection);
+router.post('/addSection', auth, isInstructorOrAdmin, createSection);
 // Update a Section
 router.post('/updateSection', auth, isInstructor, updateSection);
 // Delete a Section
 router.post('/deleteSection', auth, isInstructor, deleteSection);
 
 // Add a Sub Section to a Section
-router.post('/addSubSection', auth, isInstructor, createSubSection);
+router.post('/addSubSection', auth, isInstructorOrAdmin, createSubSection);
 // Edit Sub Section
 router.post('/updateSubSection', auth, isInstructor, updateSubSection);
 // Delete Sub Section
@@ -86,7 +86,7 @@ router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 
 
 // Edit Course routes
-router.post("/editCourse", auth, isInstructor, editCourse)
+router.post("/editCourse", auth, isInstructorOrAdmin, editCourse)
 
 // Delete a Course
 router.delete("/deleteCourse", auth, isInstructor, deleteCourse)

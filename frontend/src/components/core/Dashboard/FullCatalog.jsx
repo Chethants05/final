@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react"
-import { VscAdd } from "react-icons/vsc"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 
 import { getAllCourses } from "../../../services/operations/courseDetailsAPI"
-import IconBtn from "../../common/IconBtn"
 import CoursesTable from "./InstructorCourses/CoursesTable"
-import { ACCOUNT_TYPE } from './../../../utils/constants';
 import SearchBox from './../../common/SearchBox';
 
 export default function FullCatalog() {
-  const { token } = useSelector((state) => state.auth)
-  const navigate = useNavigate()
+  useSelector((state) => state.auth)
   const [courses, setCourses] = useState([])
   const [allCourses, setAllCourses] = useState([])
   const [loading, setLoading] = useState(false)
-  const { user } = useSelector((state) => state.profile)
+  useSelector((state) => state.profile)
 
   useEffect(() => {
     const fetchCourses = async () => {

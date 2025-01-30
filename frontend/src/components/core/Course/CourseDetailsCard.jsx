@@ -67,28 +67,32 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
             Rs. {CurrentPrice}
           </div>
           <div className="flex flex-col gap-4">
-            <button
-              className="yellowButton outline-none"
-              onClick={
-                user && course?.studentsEnrolled.includes(user?._id)
-                  ? () => navigate("/dashboard/enrolled-courses")
-                  : handleBuyCourse
-              }
-            >
-              {user && course?.studentsEnrolled.includes(user?._id)
-                ? "Go To Course"
-                : "Buy Now"}
-            </button>
-            {(!user || !course?.studentsEnrolled.includes(user?._id)) && (
+            {user?.accountType === ACCOUNT_TYPE.STUDENT &&
+              <button
+                className="yellowButton outline-none"
+                onClick={
+                  user && course?.studentsEnrolled.includes(user?._id)
+                    ? () => navigate("/dashboard/enrolled-courses")
+                    : handleBuyCourse
+                }
+              >
+                {user && course?.studentsEnrolled.includes(user?._id)
+                  ? "Go To Course"
+                  : "Buy Now"}
+              </button>
+            }
+            {(user?.accountType === ACCOUNT_TYPE.STUDENT && !course?.studentsEnrolled.includes(user?._id)) && (
               <button onClick={handleAddToCart} className="blackButton outline-none">
                 Add to Cart
               </button>
             )}
-          </div>
+          </div> 
 
-          <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
-            30-Day Money-Back Guarantee
-          </p>
+          {user?.accountType === ACCOUNT_TYPE.STUDENT &&
+            <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
+              30-Day Money-Back Guarantee
+            </p>
+          }
 
           <div className={``}>
             <p className={`my-2 text-xl font-semibold `}>
