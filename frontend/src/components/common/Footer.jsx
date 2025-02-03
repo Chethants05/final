@@ -179,10 +179,10 @@ const Footer = () => {
           </div>
 
           {/* <div className="flex items-center">
-            <a href="https://www.linkedin.com/in/aniruddha-gade-a48800231/" className="text-white p-3 hover:bg-richblack-700 rounded-full duration-300" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/skanda-prasad-mayya" className="text-white p-3 hover:bg-richblack-700 rounded-full duration-300" target="_blank" rel="noopener noreferrer">
               <ImLinkedin2 size={17} />
             </a>
-            <a href="https://www.github.com/Aniruddha-Gade" className="text-white p-3 hover:bg-richblack-700 rounded-full duration-300" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Skanda-Prasad15" className="text-white p-3 hover:bg-richblack-700 rounded-full duration-300" target="_blank" rel="noopener noreferrer">
               <ImGithub size={17} />
             </a>
           </div> */}
