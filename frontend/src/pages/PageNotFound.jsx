@@ -7,7 +7,7 @@ var pagesUnderConstruction = ['career-paths', 'forums',
   'articles', 'careers', 'paid-memberships', 'for-students', 
   'business-solutions', 'events', 'professional-certification', 
   'go', 'sql', 'nosql', 'csharp', 'html-css', 'privacy-policy',
-  'cookie-policy', 'terms'];
+  'cookie-policy', 'terms', 'java', 'javascript', 'python'];
 
 const PageNotFound = () => {
   const [isOurPage, setIsOutPage] = useState(false);

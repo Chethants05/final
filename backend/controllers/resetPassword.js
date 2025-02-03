@@ -30,7 +30,7 @@ exports.resetPasswordToken = async (req, res) => {
 
 
         // create url
-        const url = `https://study-notion-mern-stack.netlify.app/update-password/${token}`;
+        const url = `https://brightpath05.netlify.app/update-password/${token}`;
 
         // send email containing url
         await mailSender(email, 'Password Reset Link', `Password Reset Link : ${url}`);
@@ -111,6 +111,16 @@ exports.resetPassword = async (req, res) => {
             { token },
             { password: hashedPassword },
             { new: true });
+
+
+        const emailResponse = await mailSender(
+            userDetails.email,
+            'Password for your account has been updated',
+            passwordUpdated(
+                userDetails.email,
+                `Password updated successfully for ${userDetails.firstName} ${userDetails.lastName}`
+            )
+        );
 
         res.status(200).json({
             success: true,
