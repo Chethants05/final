@@ -35,13 +35,13 @@ export const HomePageExplore = [
                 heading : "CSS",
                 description : "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
                 level : 'Beginner',
-                lessonNumber : 3
+                lessonNumber : 2
             },
             {
                 heading : "JavaScript",
                 description : "This course covers the fundamentals of JavaScript, teaching you how to create interactive and dynamic web pages by manipulating HTML and CSS through scripting.",
                 level : 'Beginner',
-                lessonNumber : 3
+                lessonNumber : 2
             },
         ]
     },
@@ -58,13 +58,13 @@ export const HomePageExplore = [
                 heading : "Python",
                 description : "This course covers the fundamentals of Python programming, teaching you how to write clean, efficient code to build a wide range of applications from web development to data analysis.",
                 level : 'Beginner',
-                lessonNumber : 3
+                lessonNumber : 2
             },
             {
                 heading : "AI",
                 description : "This course explores the basics of Artificial Intelligence, teaching you how to develop intelligent systems using machine learning, natural language processing, and other AI techniques.",
                 level : 'Beginner',
-                lessonNumber : 3
+                lessonNumber : 4
             },
         ]
     },
@@ -75,7 +75,7 @@ export const HomePageExplore = [
                 heading : "Flask",
                 description : "This course teaches you how to build web applications using Flask, a lightweight Python framework, focusing on routing, templates, and working with databases to create dynamic, scalable sites.",
                 level : 'Beginner',
-                lessonNumber : 3
+                lessonNumber : 2
             },
             {
                 heading : "Django",
@@ -87,7 +87,7 @@ export const HomePageExplore = [
                 heading : "Cloud Computing",
                 description : "This course introduces cloud computing, teaching you how to leverage cloud platforms and services to build, deploy, and scale applications efficiently while managing resources and ensuring security.",
                 level : 'Beginner',
-                lessonNumber : 3
+                lessonNumber : 2
             },
         ]
     }
