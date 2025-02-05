@@ -28,12 +28,13 @@ const CodeBlocks = ({
 
                 {/* Button Group */}
                 <div className="flex gap-7 mt-7">
-                    <CTAButton active={ctabtn1.active} linkto={ctabtn1.link}>
-                        <div className="flex items-center gap-2">
-                            {ctabtn1.btnText}
-                            <FaArrowRight />
-                        </div>
-                    </CTAButton>
+                    {ctabtn1 != "" ?
+                        <CTAButton active={ctabtn1.active} linkto={ctabtn1.link}>
+                            <div className="flex items-center gap-2">
+                                {ctabtn1.btnText}
+                                <FaArrowRight />
+                            </div>
+                        </CTAButton> : ""}
                     {
                         ctabtn2 ?
                             <CTAButton active={ctabtn2.active} linkto={ctabtn2.link}>
@@ -41,7 +42,7 @@ const CodeBlocks = ({
                             </CTAButton>
                             : ""
                     }
-                    
+
                 </div>
             </div>
 
@@ -67,7 +68,7 @@ const CodeBlocks = ({
                 <div
                     className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-1`}
                 >
-                     <div className={`${backgroundGradient}`}></div>
+                    <div className={`${backgroundGradient}`}></div>
 
                     {/* <TypeAnimation
                         sequence={[codeblock, 1000, ""]}
@@ -79,21 +80,21 @@ const CodeBlocks = ({
                         }}
                         omitDeletionAnimation={true}
                     /> */}
-                     <TypeAnimation
-            sequence={[codeblock, 2000, ""]}
-            repeat={Infinity}
-            cursor={true}
-           
-            style = {
-                {
-                    whiteSpace: "pre-line",
-                    display:"block",
-                    overflowX:"hidden",
-                    fontSize:"16px",
-                }
-            }
-            omitDeletionAnimation={true}
-           />
+                    <TypeAnimation
+                        sequence={[codeblock, 2000, ""]}
+                        repeat={Infinity}
+                        cursor={true}
+
+                        style={
+                            {
+                                whiteSpace: "pre-line",
+                                display: "block",
+                                overflowX: "hidden",
+                                fontSize: "16px",
+                            }
+                        }
+                        omitDeletionAnimation={true}
+                    />
                 </div>
             </div>
         </div>

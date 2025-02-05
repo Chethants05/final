@@ -44,7 +44,7 @@ const LearningLanguageSection = () => {
                 </div>
 
                 <div className='w-fit'>
-                    <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/full-catalog" : "/signup"}>
+                    <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : (user?.accountType == ACCOUNT_TYPE.STUDENT || user?.accountType == ACCOUNT_TYPE.ADMIN) ? "/dashboard/full-catalog" : "/signup"}>
                         <div>
                             Learn more
                         </div>

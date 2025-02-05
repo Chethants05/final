@@ -14,7 +14,7 @@ import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
 import CourseDetails from './pages/CourseDetails';
 import Catalog from './pages/Catalog';
- 
+
 import Navbar from "./components/common/Navbar"
 
 import OpenRoute from "./components/core/Auth/OpenRoute"
@@ -78,8 +78,8 @@ function App() {
 
 
   return (
-    
-     
+
+
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <Navbar />
 
@@ -169,11 +169,13 @@ function App() {
             <>
               <Route path="dashboard/instructor" element={<Instructor />} />
               <Route path="dashboard/my-courses" element={<MyCourses />} />
-              <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
             </>
           )}
           {(user?.accountType === ACCOUNT_TYPE.ADMIN || user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) && (
-            <Route path="dashboard/add-course" element={<AddCourse />} />
+            <>
+              <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
+              <Route path="dashboard/add-course" element={<AddCourse />} />
+            </>
           )}
         </Route>
 

@@ -38,13 +38,6 @@ export const sidebarLinks = [
   },
   {
     id: 6,
-    name: "Add Lecturer",
-    path: "/",
-    type: [ACCOUNT_TYPE.ADMIN],
-    icon: "VscAdd",
-  },
-  {
-    id: 7,
     name: "Enrolled Courses",
     path: "/dashboard/enrolled-courses",
     type: [ACCOUNT_TYPE.STUDENT],
@@ -58,7 +51,7 @@ export const sidebarLinks = [
   //   icon: "VscHistory",
   // },
   {
-    id: 8,
+    id: 7,
     name: "Add Instructor",
     path: "/signup",
     type: [ACCOUNT_TYPE.ADMIN],

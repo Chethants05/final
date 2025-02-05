@@ -144,13 +144,14 @@ const Home = () => {
 
 
                     <div className='flex flex-row gap-7 mt-8'>
-                        <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/full-catalog" : "/signup" }>
+                        <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : (user?.accountType == ACCOUNT_TYPE.STUDENT || user?.accountType == ACCOUNT_TYPE.ADMIN) ? "/dashboard/full-catalog" : "/signup"}>
                             Learn More
                         </CTAButton>
-
-                        <CTAButton active={false} linkto={"/contact"}>
-                            Book a Demo
-                        </CTAButton>
+                        {!user || user?.accountType == ACCOUNT_TYPE.STUDENT ?
+                            <CTAButton active={false} linkto={"/contact"}>
+                                Book a Demo
+                            </CTAButton>
+                            : ""}
                     </div>
                 </div>
 
@@ -173,7 +174,7 @@ const Home = () => {
                             ctabtn1={
                                 {
                                     btnText: "try it yourself",
-                                    link: user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/full-catalog" : "/signup",
+                                    link: user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : (user?.accountType == ACCOUNT_TYPE.STUDENT || user?.accountType == ACCOUNT_TYPE.ADMIN) ? "/dashboard/full-catalog" : "/signup",
                                     active: true,
                                 }
                             }
@@ -205,11 +206,12 @@ const Home = () => {
                             subheading={
                                 "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."
                             }
-                            ctabtn1={{
+
+                            ctabtn1={user?.accountType != ACCOUNT_TYPE.ADMIN ? {
                                 btnText: "Continue Lesson",
                                 link: user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/enrolled-courses" : "/signup",
                                 active: true,
-                            }}
+                            } : ""}
                             // ctabtn2={{
                             //     btnText: "Learn More",
                             //     link: "/signup",
@@ -245,7 +247,7 @@ const Home = () => {
                         <div className='w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
                             <div className='h-[150px]'></div>
                             <div className='flex flex-row gap-7 text-white '>
-                                <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/full-catalog" : "/signup"}>
+                                <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : (user?.accountType == ACCOUNT_TYPE.STUDENT || user?.accountType == ACCOUNT_TYPE.ADMIN) ? "/dashboard/full-catalog" : "/signup"}>
                                     <div className='flex items-center gap-3' >
                                         Explore Full Catalog
                                         <FaArrowRight />
@@ -271,7 +273,7 @@ const Home = () => {
                                 <div className='text-[16px]'>
                                     The modern BrightPath is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                                 </div>
-                                <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : user?.accountType == ACCOUNT_TYPE.STUDENT ? "/dashboard/full-catalog" : "/signup"}>
+                                <CTAButton active={true} linkto={user?.accountType == ACCOUNT_TYPE.INSTRUCTOR ? "/dashboard/my-courses" : (user?.accountType == ACCOUNT_TYPE.STUDENT || user?.accountType == ACCOUNT_TYPE.ADMIN) ? "/dashboard/full-catalog" : "/signup"}>
                                     <div>
                                         Learn more
                                     </div>
@@ -291,7 +293,7 @@ const Home = () => {
 
 
                 {/*Section 3 */}
-              
+
                 {/* <div className='mt-14 w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
                     <InstructorSection />
 

@@ -12,8 +12,8 @@ import { RiDeleteBin6Line } from "react-icons/ri"
 import { useNavigate, Link } from "react-router-dom"
 
 import { formatDate } from "../../../../services/formatDate"
-import { deleteCourse, fetchInstructorCourses, } from "../../../../services/operations/courseDetailsAPI"
-import { COURSE_STATUS } from "../../../../utils/constants"
+import { deleteCourse, fetchInstructorCourses, getAllCourses, } from "../../../../services/operations/courseDetailsAPI"
+import { ACCOUNT_TYPE, COURSE_STATUS } from "../../../../utils/constants"
 import ConfirmationModal from "../../../common/ConfirmationModal"
 import Img from './../../../common/Img';
 import toast from 'react-hot-toast'
@@ -26,6 +26,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading,
 
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.profile)
 
   const [confirmationModal, setConfirmationModal] = useState(null)
   const TRUNCATE_LENGTH = 25
@@ -35,7 +36,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading,
     setLoading(true)
     const toastId = toast.loading('Deleting...');
     await deleteCourse({ courseId: courseId }, token)
-    const result = await fetchInstructorCourses(token)
+    const result = user.accountType == ACCOUNT_TYPE.ADMIN ? await getAllCourses() : await fetchInstructorCourses(token)
     if (result) {
       setCourses(result)
     }
@@ -168,7 +169,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading,
                   <Td className="text-sm font-medium text-richblack-100">₹{course.price}</Td>
 
                   {
-                    !isFullCatalog ? <Td className="text-sm font-medium text-richblack-100 ">
+                    !isFullCatalog || user?.accountType == ACCOUNT_TYPE.ADMIN ? <Td className="text-sm font-medium text-richblack-100 ">
                       {/* Edit button */}
                       <button
                         disabled={loading}
