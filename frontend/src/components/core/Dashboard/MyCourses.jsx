@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom"
 import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
 import IconBtn from "../../common/IconBtn"
 import CoursesTable from "./InstructorCourses/CoursesTable"
-
+import SearchBox from './../../common/SearchBox';
 
 
 export default function MyCourses() {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const [courses, setCourses] = useState([])
+  const [fetchedCourses, setFetchedCourses] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function MyCourses() {
       setLoading(false);
       if (result) {
         setCourses(result)
+        setFetchedCourses(result)
       }
     }
     fetchCourses()
@@ -34,17 +36,18 @@ export default function MyCourses() {
     window.scrollTo(0, 0);
   }, [])
 
+  function funcToSetFilteredData(filteredData){
+    if (filteredData) {
+        setCourses(filteredData)
+      }
+  }
+
   return (
     <div>
       <div className="mb-14 flex justify-between">
         {/* <div className="mb-14 flex items-center justify-between"> */}
         <h1 className="text-4xl font-medium text-richblack-5 font-boogaloo text-center lg:text-left">My Courses</h1>
-        <IconBtn
-          text="Add Course"
-          onclick={() => navigate("/dashboard/add-course")}
-        >
-          <VscAdd />
-        </IconBtn>
+        <SearchBox data={fetchedCourses} searchKey={"courseName"} onFilter={funcToSetFilteredData}/>
       </div>
 
       {/* course Table */}

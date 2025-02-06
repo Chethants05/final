@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 import { getUserEnrolledCourses } from "../../../services/operations/profileAPI"
 import Img from './../../common/Img';
-
+import SearchBox from './../../common/SearchBox';
 
 
 export default function EnrolledCourses() {
@@ -13,12 +13,14 @@ export default function EnrolledCourses() {
   const navigate = useNavigate()
 
   const [enrolledCourses, setEnrolledCourses] = useState(null)
+  const [fetchedEnrolledCourses, setFetchedEnrolledCourses] = useState(null)
 
   // fetch all users enrolled courses
   const getEnrolledCourses = async () => {
     try {
       const res = await getUserEnrolledCourses(token);
       setEnrolledCourses(res);
+      setFetchedEnrolledCourses(res);
     } catch (error) {
       console.log("Could not fetch enrolled courses.")
     }
@@ -57,11 +59,18 @@ export default function EnrolledCourses() {
       </p>)
   }
 
-
+  function funcToSetFilteredData(filteredData) {
+    if (filteredData) {
+      setEnrolledCourses(filteredData)
+    }
+  }
 
   return (
     <>
-      <div className="text-4xl text-richblack-5 font-boogaloo text-center sm:text-left">Enrolled Courses</div>
+      <div className="mb-14 flex justify-between">
+        <div className="text-4xl text-richblack-5 font-boogaloo text-center sm:text-left">Enrolled Courses</div>
+        <SearchBox data={fetchedEnrolledCourses} searchKey={"courseName"} onFilter={funcToSetFilteredData} />
+      </div>
       {
         <div className="my-8 text-richblack-5">
           {/* Headings */}
