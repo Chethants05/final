@@ -50,7 +50,9 @@ export function signUp(accountType, firstName, lastName, email, password, confir
   return async (dispatch) => {
 
     const toastId = toast.loading("Loading...");
-    dispatch(setLoading(true));
+    if (otp !== "THROUGH_ADMIN") {
+      dispatch(setLoading(true));
+    }
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
         accountType,
@@ -67,9 +69,14 @@ export function signUp(accountType, firstName, lastName, email, password, confir
         toast.error(response.data.message);
         throw new Error(response.data.message);
       }
-
-      toast.success("Signup Successful");
-      navigate("/login");
+      
+      if (otp === "THROUGH_ADMIN") {
+        toast.success("Instructor Added Successfully");
+      }
+      else {
+        toast.success("Signup Successful");
+        navigate("/login");
+      }
     } catch (error) {
       console.log("SIGNUP API ERROR --> ", error);
       // toast.error(error.response.data.message);
@@ -113,7 +120,7 @@ export function login(email, password, navigate) {
       localStorage.setItem("token", JSON.stringify(response.data?.token));
 
       localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage }));
-      
+
       navigate("/dashboard/my-profile");
     } catch (error) {
       console.log("LOGIN API ERROR.......", error)

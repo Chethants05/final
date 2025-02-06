@@ -53,7 +53,7 @@ export const sidebarLinks = [
   {
     id: 7,
     name: "Add Instructor",
-    path: "/signup",
+    path: "/add-instructor",
     type: [ACCOUNT_TYPE.ADMIN],
     icon: "VscAdd"
   }

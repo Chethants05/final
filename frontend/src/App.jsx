@@ -38,6 +38,7 @@ import VideoDetails from './components/core/ViewCourse/VideoDetails';
 import { ACCOUNT_TYPE } from './utils/constants';
 
 import { HiArrowNarrowUp } from "react-icons/hi"
+import AddInstructor from "./components/core/Dashboard/AddInstructor";
 
 
 function App() {
@@ -152,6 +153,10 @@ function App() {
           <Route path="dashboard/Settings" element={<Settings />} />
           {(user?.accountType === ACCOUNT_TYPE.ADMIN || user?.accountType === ACCOUNT_TYPE.STUDENT) && (
             <Route path="dashboard/full-catalog" element={<FullCatalog />} />
+          )}
+
+          {(user?.accountType === ACCOUNT_TYPE.ADMIN) && (
+            <Route path="/add-instructor" element={<AddInstructor />} />
           )}
 
           {/* Route only for Students */}

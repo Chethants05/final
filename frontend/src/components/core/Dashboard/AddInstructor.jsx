@@ -1,36 +1,17 @@
-/* *************************************************
-
-
-
-
-
-
-*************TO BE DEVELOPED**************
-
-
-
-
-
-******************************************* */
-
 import { useState } from "react"
 import { toast } from "react-hot-toast"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
-import { setSignupData } from "../../../slices/authSlice"
+import { signUp } from "./.././../../services/operations/authAPI";
 import { ACCOUNT_TYPE } from "../../../utils/constants"
-import Tab from "../../common/Tab"
-
-
 
 function AddInstructor() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // student or instructor
-  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
+  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.INSTRUCTOR);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -63,17 +44,9 @@ function AddInstructor() {
       toast.error("Passwords Do Not Match")
       return;
     }
-    const signupData = {
-      ...formData,
-      accountType,
-    };
-
-    // Setting signup data to state
-    // To be used after otp verification
-    dispatch(setSignupData(signupData));
-    // Send OTP to user for verification
-    dispatch(sendOtp(formData.email, navigate));
-
+    //dispatch(setSignupData(signupData));
+    dispatch(signUp(accountType, firstName, lastName, email, password, confirmPassword, "THROUGH_ADMIN", navigate));
+    
     // Reset form data
     setFormData({
       firstName: "",
@@ -82,32 +55,19 @@ function AddInstructor() {
       password: "",
       confirmPassword: "",
     })
-    setAccountType(ACCOUNT_TYPE.STUDENT);
+    //setAccountType(ACCOUNT_TYPE.INSTRUCTOR);
   };
-
-  // data to pass to Tab component
-  const tabData = [
-    // {
-    //   id: 1,
-    //   // tabName: "Student",
-    //   type: ACCOUNT_TYPE.STUDENT,
-    // },
-    // {
-    //   id: 2,
-    //   // tabName: "Instructor",
-    //   type: ACCOUNT_TYPE.INSTRUCTOR,
-    // },
-  ];
 
   return (
     <div>
       {<br/>}
       {/* Tab */}
       {/* <Tab tabData={tabData} field={accountType} setField={setAccountType} /> */}
-
+      <p className="text-4xl font-bold text-richblack-5 sm:text-[38px]">Add Instructor</p>
+      <br/><br/>
       {/* Form */}
-      <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
-        <div className="flex gap-x-4">
+      <form onSubmit={handleOnSubmit} className="grid grid-cols-3 gap-4">
+        <div className="flex gap-x-4 col-span-2">
           {/* First Name */}
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
@@ -123,7 +83,7 @@ function AddInstructor() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem] bg-richblack-800 pr-[127px] py-[12px] pl-[12px] text-richblack-5 outline-none"
             />
           </label>
 
@@ -142,13 +102,14 @@ function AddInstructor() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem] bg-richblack-800 pr-[127px] py-[12px] pl-[12px] text-richblack-5 outline-none"
             />
           </label>
         </div>
+        <br/>
 
         {/* Email Address */}
-        <label className="w-full">
+        <label className="col-span-2">
           <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
             Email Address <sup className="text-pink-200">*</sup>
           </p>
@@ -162,14 +123,14 @@ function AddInstructor() {
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-20 text-richblack-5 outline-none"
           />
         </label>
+        <br/>
 
-
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-4 col-span-2">
           {/* Create Password */}
-          <label className="relative">
+          <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
               Create Password <sup className="text-pink-200">*</sup>
             </p>
@@ -183,7 +144,7 @@ function AddInstructor() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem] bg-richblack-800 pr-[127px] py-[12px] pl-[12px] text-richblack-5 outline-none"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -198,7 +159,7 @@ function AddInstructor() {
           </label>
 
           {/* Confirm Password  */}
-          <label className="relative">
+          <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
               Confirm Password <sup className="text-pink-200">*</sup>
             </p>
@@ -212,7 +173,7 @@ function AddInstructor() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem] bg-richblack-800 pr-[127px] py-[12px] pl-[12px] text-richblack-5 outline-none"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -227,12 +188,11 @@ function AddInstructor() {
           </label>
         </div>
 
-
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+          className="col-span-2 mt-6 rounded-[8px] bg-yellow-50 p-[12px] font-medium text-richblack-900"
         >
-          Create Account
+          Create Instructor Account
         </button>
       </form>
     </div>
